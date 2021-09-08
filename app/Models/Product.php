@@ -21,8 +21,13 @@ class Product extends Model
     /**
      * Relationship to Users
      */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+    public function users(){
+
+        // SELECT * 
+        // FROM products
+        // INNER JOIN users
+        // ON products.user_id = users.id;
+
+        return $this->belongsTo('App\Models\User','user_id')->select(['id','fullname','avatar']); 
     }
 }
